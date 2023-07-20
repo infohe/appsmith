@@ -218,6 +218,7 @@ export function* updateDataTreeHandler(
       jsData,
     );
   }
+
   yield put(setDependencyMap(dependencies));
   if (postEvalActionsToDispatch && postEvalActionsToDispatch.length) {
     yield call(postEvalActionDispatcher, postEvalActionsToDispatch);
