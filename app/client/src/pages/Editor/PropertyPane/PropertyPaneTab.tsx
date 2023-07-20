@@ -47,7 +47,7 @@ export function PropertyPaneTab(props: PropertyPaneTabProps) {
     (value) => {
       setSelectedIndex(tabs.indexOf(value) || 0);
     },
-    [setSelectedIndex, tabs],
+    [setSelectedIndex],
   );
   return (
     <StyledTabs onValueChange={onValueChange} value={tabs[selectedIndex]}>
