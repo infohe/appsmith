@@ -175,6 +175,13 @@ export default class DataTreeEvaluator {
   evalPathsIdenticalToState: any = {};
   undefinedEvalValuesMap: Record<string, boolean> = {};
 
+  prevState = {};
+  setPrevState(state: any) {
+    this.prevState = state;
+  }
+  getPrevState() {
+    return this.prevState;
+  }
   public hasCyclicalDependency = false;
   constructor(
     widgetConfigMap: WidgetTypeConfigMap,

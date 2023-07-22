@@ -99,7 +99,6 @@ import { getAppsmithConfigs } from "@appsmith/configs";
 import { executeJSUpdates } from "actions/pluginActionActions";
 import { setEvaluatedActionSelectorField } from "actions/actionSelectorActions";
 import { waitForWidgetConfigBuild } from "./InitSagas";
-import { generateOptimisedUpdates } from "./EvaluationsSagaUtils";
 
 const APPSMITH_CONFIGS = getAppsmithConfigs();
 export const evalWorker = new GracefulWorkerService(
@@ -130,7 +129,6 @@ export function* updateDataTreeHandler(
 
   const {
     configTree,
-    dataTree,
     dependencies,
     errors,
     evalMetaUpdates = [],
@@ -144,7 +142,7 @@ export function* updateDataTreeHandler(
     undefinedEvalValuesMap,
     unEvalUpdates,
     jsVarsCreatedEvent,
-    identicalEvalPathsPatches,
+    updates,
   } = evalTreeResponse;
 
   const appMode: ReturnType<typeof getAppMode> = yield select(getAppMode);
@@ -156,13 +154,6 @@ export function* updateDataTreeHandler(
     PerformanceTransactionName.SET_EVALUATED_TREE,
   );
 
-  const oldDataTree: ReturnType<typeof getDataTree> = yield select(getDataTree);
-
-  const updates = generateOptimisedUpdates(
-    oldDataTree,
-    dataTree,
-    identicalEvalPathsPatches,
-  );
   if (!isEmpty(staleMetaIds)) {
     yield put(resetWidgetsMetaState(staleMetaIds));
   }

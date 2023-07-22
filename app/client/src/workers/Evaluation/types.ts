@@ -1,6 +1,5 @@
 import type {
   ConfigTree,
-  DataTree,
   unEvalAndConfigTree,
 } from "entities/DataTree/dataTreeFactory";
 import type { ActionValidationConfigMap } from "constants/PropertyControlConstants";
@@ -42,7 +41,6 @@ export interface EvalTreeRequestData {
 }
 
 export interface EvalTreeResponseData {
-  dataTree: DataTree;
   dependencies: DependencyMap;
   errors: EvalError[];
   evalMetaUpdates: EvalMetaUpdates;
@@ -57,7 +55,7 @@ export interface EvalTreeResponseData {
   isNewWidgetAdded: boolean;
   undefinedEvalValuesMap: Record<string, boolean>;
   jsVarsCreatedEvent?: { path: string; type: string }[];
-  identicalEvalPathsPatches: Record<string, string>;
+  updates: any;
 }
 
 export type JSVarMutatedEvents = Record<string, { path: string; type: string }>;

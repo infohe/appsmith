@@ -23,6 +23,7 @@ import JSObjectCollection from "workers/Evaluation/JSObject/Collection";
 import { setEvalContext } from "../evaluate";
 import { asyncJsFunctionInDataFields } from "../JSObject/asyncJSFunctionBoundToDataField";
 import { getJSVariableCreatedEvents } from "../JSObject/JSVariableEvents";
+import { generateOptimisedUpdates } from "sagas/EvaluationsSagaUtils";
 
 export let replayMap: Record<string, ReplayEntity<any>> | undefined;
 export let dataTreeEvaluator: DataTreeEvaluator | undefined;
@@ -209,9 +210,17 @@ export default function (request: EvalWorkerSyncRequest) {
 
   const identicalEvalPathsPatches =
     dataTreeEvaluator?.getEvalPathsIdenticalToState(dataTree) || {};
-  const evalTreeResponse: EvalTreeResponseData = {
-    identicalEvalPathsPatches,
+
+  const updates = generateOptimisedUpdates(
+    dataTreeEvaluator?.getPrevState(),
     dataTree,
+    identicalEvalPathsPatches,
+  );
+
+  dataTreeEvaluator?.setPrevState(dataTree);
+
+  const evalTreeResponse: EvalTreeResponseData = {
+    updates,
     dependencies,
     errors,
     evalMetaUpdates,

@@ -1,9 +1,7 @@
-import type { Diff } from "deep-diff";
 import { diff } from "deep-diff";
-import type { DataTree } from "entities/DataTree/dataTreeFactory";
 
-import { get, isNumber, isObject } from "lodash";
 import equal from "fast-deep-equal";
+import { get, isNumber, isObject } from "lodash";
 
 const LARGE_COLLECTION_SIZE = 100;
 // for object paths which have a "." in the object key like "a.['b.c']"
@@ -110,7 +108,7 @@ const generateDiffUpdates = (
 ) => {
   const attachDirectly: any = [];
   const ignoreLargeKeysHasBeenAttached = new Set();
-
+  const attachLater: any = [];
   const updates =
     diff(oldDataTree, dataTree, (path, key) => {
       if (!path.length || key === "__evaluation__") return false;
@@ -123,7 +121,11 @@ const generateDiffUpdates = (
         const correspondingStatePath = ignoreLargeKeys[setPath];
         const statePathValue = get(dataTree, correspondingStatePath);
         if (!equal(originalStateVal, statePathValue)) {
-          attachDirectly.push({ path: segmentedPath, rhs: statePathValue });
+          attachLater.push({
+            kind: "referenceState",
+            path: segmentedPath,
+            referencePath: correspondingStatePath,
+          });
         }
         ignoreLargeKeysHasBeenAttached.add(setPath);
         return true;
@@ -153,18 +155,20 @@ const generateDiffUpdates = (
     ignoreLargeKeysHasBeenAttached,
     dataTree,
   );
-  return [
-    ...updates,
+
+  const largeDataSetUpdates = [
     ...attachDirectly.map((val: any) => ({ kind: "N", ...val })),
     ...missingSetPaths,
+    ...attachLater,
   ];
+  return [...updates, ...largeDataSetUpdates];
 };
 
 export const generateOptimisedUpdates = (
   oldDataTree: any,
   dataTree: any,
   identicalEvalPathsPatches: any,
-): Diff<DataTree, DataTree>[] => {
+): any => {
   const ignoreLargeKeys = normaliseEvalPath(identicalEvalPathsPatches);
   const updates = generateDiffUpdates(oldDataTree, dataTree, ignoreLargeKeys);
   return updates;
