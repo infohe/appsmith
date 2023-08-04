@@ -2,6 +2,7 @@ import React from "react";
 
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
+import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFBuilderComponent from "../component";
 
@@ -55,6 +56,18 @@ class RJSFBuilderWidget extends BaseWidget<
     return [];
   }
 
+  static getDefaultPropertiesMap(): Record<string, string> {
+    return {
+      schema: "defaultSchema",
+    };
+  }
+
+  static getDerivedPropertiesMap(): DerivedPropertiesMap {
+    return {
+      value: `{{ this.schema }}`,
+    };
+  }
+
   static getMetaPropertiesMap(): Record<string, any> {
     return {
       schema: "{}",
@@ -93,6 +106,7 @@ class RJSFBuilderWidget extends BaseWidget<
 }
 
 export interface RJSFBuilderWidgetProps extends WidgetProps {
+  defaultSchema?: string;
   schema: any;
   uischema: any;
   onSchemaChanged: { schema: string; uischema: string };
