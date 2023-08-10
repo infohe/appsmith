@@ -5190,6 +5190,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rjsf/core@npm:^5.12.0":
+  version: 5.12.0
+  resolution: "@rjsf/core@npm:5.12.0"
+  dependencies:
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+    markdown-to-jsx: ^7.3.2
+    nanoid: ^3.3.6
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@rjsf/utils": ^5.8.x
+    react: ^16.14.0 || >=17
+  checksum: 082f97ff7cd2e579031a26b313d5df936df1f29dd02bd76298fe1c53752525059e4598963bf0a607b0ba9888589a1362f3f014687c35405fec0ff26ca7de94e9
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -9823,6 +9839,7 @@ __metadata:
     "@manaflair/redux-batch": ^1.0.0
     "@mantine/hooks": ^5.10.1
     "@redux-saga/testing-utils": ^1.1.5
+    "@rjsf/core": ^5.12.0
     "@sentry/react": ^6.2.4
     "@sentry/tracing": ^6.2.4
     "@sentry/webpack-plugin": ^1.18.9
@@ -21220,7 +21237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:4.17.21":
+"lodash-es@npm:4.17.21, lodash-es@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash-es@npm:4.17.21"
   checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
@@ -21682,6 +21699,15 @@ __metadata:
   version: 1.0.4
   resolution: "markdown-escapes@npm:1.0.4"
   checksum: 6833a93d72d3f70a500658872312c6fa8015c20cc835a85ae6901fa232683fbc6ed7118ebe920fea7c80039a560f339c026597d96eee0e9de602a36921804997
+  languageName: node
+  linkType: hard
+
+"markdown-to-jsx@npm:^7.3.2":
+  version: 7.3.2
+  resolution: "markdown-to-jsx@npm:7.3.2"
+  peerDependencies:
+    react: ">= 0.14.0"
+  checksum: 8885c6343b71570b0a7ec16cd85a49b853a830234790ee7430e2517ea5d8d361ff138bd52147f650790f3e7b3a28a15c755fc16f8856dd01ddf09a6161782e06
   languageName: node
   linkType: hard
 

@@ -4,12 +4,9 @@ import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
 import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
-import RJSFBuilderComponent from "../component";
+import RJSFormComponent from "../component";
 
-class RJSFBuilderWidget extends BaseWidget<
-  RJSFBuilderWidgetProps,
-  WidgetState
-> {
+class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
   static getPropertyPaneContentConfig() {
     return [
       {
@@ -33,14 +30,23 @@ class RJSFBuilderWidget extends BaseWidget<
             isBindProperty: true,
             isTriggerProperty: false,
           },
+          {
+            helpText: "Show form data",
+            propertyName: "formData",
+            label: "Form Data",
+            controlType: "INPUT_TEXT",
+            placeholderText: "should be a json",
+            isBindProperty: true,
+            isTriggerProperty: false,
+          },
         ],
       },
       {
         sectionName: "Events",
         children: [
           {
-            helpText: "when the schema is changed",
-            propertyName: "onSchemaChanged",
+            helpText: "when the form data is changed",
+            propertyName: "onFormDataChanged",
             label: "onChange",
             controlType: "ACTION_SELECTOR",
             isJSConvertible: true,
@@ -60,6 +66,7 @@ class RJSFBuilderWidget extends BaseWidget<
     return {
       schema: "defaultSchema",
       uischema: "defaultUischema",
+      formData: "defaultFormData",
     };
   }
 
@@ -67,6 +74,7 @@ class RJSFBuilderWidget extends BaseWidget<
     return {
       schema: `{{ this.schema }}`,
       uischema: `{{ this.uischema }}`,
+      formData: `{{ this.formData }}`,
     };
   }
 
@@ -74,20 +82,22 @@ class RJSFBuilderWidget extends BaseWidget<
     return {
       schema: "{}",
       uischema: "{}",
+      formData: {},
     };
   }
 
-  valueChangedHandler = (schema: string, uischema: string) => {
-    this.props.updateWidgetMetaProperty("schema", schema);
-
-    this.props.updateWidgetMetaProperty("uischema", uischema);
+  valueChangedHandler = (formData: any) => {
+    this.props.updateWidgetMetaProperty("formData", formData.formData);
+    this.props.updateWidgetMetaProperty("schema", formData.schema);
+    this.props.updateMetaWidgetProperty("uischema", formData.uiSchema);
   };
 
   getPageView() {
-    const { schema, uischema } = this.props;
+    const { formData, schema, uischema } = this.props;
 
     return (
-      <RJSFBuilderComponent
+      <RJSFormComponent
+        formData={formData}
         onChange={this.valueChangedHandler}
         schema={schema}
         uischema={uischema}
@@ -97,7 +107,7 @@ class RJSFBuilderWidget extends BaseWidget<
   }
 
   static getWidgetType(): string {
-    return "RJSFBUILDER_WIDGET";
+    return "RJSFORM_WIDGET";
   }
 
   static getStylesheetConfig() {
@@ -108,11 +118,11 @@ class RJSFBuilderWidget extends BaseWidget<
   }
 }
 
-export interface RJSFBuilderWidgetProps extends WidgetProps {
+export interface RJSFormWidgetProps extends WidgetProps {
   defaultSchema?: string;
   schema: any;
   uischema: any;
-  onSchemaChanged: { schema: string; uischema: string };
+  onFormDataChanged: { formData: any };
 }
 
-export default RJSFBuilderWidget;
+export default RJSFormWidget;
