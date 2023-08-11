@@ -167,6 +167,9 @@ import ListWidgetV2, {
 import RJSFBuilderWidget, {
   CONFIG as RJSF_BUILDER_CONFIG,
 } from "widgets/RJSFBuilderWidget";
+import RJSFormWidget, {
+  CONFIG as RJS_FORM_WIDGET_CONFIG,
+} from "widgets/RJSFormWidget";
 
 export const ALL_WIDGETS_AND_CONFIG: [any, WidgetConfiguration][] = [
   [CanvasWidget, CANVAS_WIDGET_CONFIG],
@@ -233,6 +236,7 @@ export const ALL_WIDGETS_AND_CONFIG: [any, WidgetConfiguration][] = [
 
   //Custom Widgets
   [RJSFBuilderWidget, RJSF_BUILDER_CONFIG],
+  [RJSFormWidget, RJS_FORM_WIDGET_CONFIG],
 
   /*
    * If a newly added widget works well inside the list widget,
