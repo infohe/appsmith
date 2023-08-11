@@ -5221,6 +5221,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rjsf/validator-ajv6@npm:^5.12.0":
+  version: 5.12.0
+  resolution: "@rjsf/validator-ajv6@npm:5.12.0"
+  dependencies:
+    ajv: ^6.12.6
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+  peerDependencies:
+    "@rjsf/utils": ^5.8.x
+  checksum: 8a14d9c387a6029d73cf5d8e40b97bf4e299598b87cb8937f99d8a83df546f648811c5c408bd151f647b3827f4a9d95795e4b85810e6dc2dc07026096b767b79
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -9580,7 +9593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^6.10.0, ajv@npm:^6.12.2, ajv@npm:^6.12.4, ajv@npm:^6.12.5":
+"ajv@npm:^6.10.0, ajv@npm:^6.12.2, ajv@npm:^6.12.4, ajv@npm:^6.12.5, ajv@npm:^6.12.6":
   version: 6.12.6
   resolution: "ajv@npm:6.12.6"
   dependencies:
@@ -9856,6 +9869,7 @@ __metadata:
     "@redux-saga/testing-utils": ^1.1.5
     "@rjsf/core": ^5.12.0
     "@rjsf/utils": ^5.12.0
+    "@rjsf/validator-ajv6": ^5.12.0
     "@sentry/react": ^6.2.4
     "@sentry/tracing": ^6.2.4
     "@sentry/webpack-plugin": ^1.18.9
