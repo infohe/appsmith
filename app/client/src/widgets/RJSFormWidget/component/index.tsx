@@ -4,8 +4,6 @@ import Form from "@rjsf/core";
 import type { ComponentProps } from "widgets/BaseComponent";
 import { customizeValidator } from "@rjsf/validator-ajv6";
 
-// const metaSchemaDraft04 = require("ajv/lib/refs/json-schema-draft-04.json");
-
 const validator = customizeValidator({});
 
 function RJSFormComponent(props: RJSFormComponentProps) {

@@ -18,9 +18,9 @@ export const CONFIG = {
     rows: 30,
     columns: 80,
     version: 1,
-    schema: undefined,
-    uischema: undefined,
-    formData: undefined,
+    schema: {},
+    uischema: {},
+    formData: {},
   },
   properties: {
     derived: Widget.getDerivedPropertiesMap(),

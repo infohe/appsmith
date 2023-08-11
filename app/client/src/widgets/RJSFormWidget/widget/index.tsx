@@ -80,8 +80,8 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
 
   static getMetaPropertiesMap(): Record<string, any> {
     return {
-      schema: "{}",
-      uischema: "{}",
+      schema: {},
+      uischema: {},
       formData: {},
     };
   }
