@@ -2,6 +2,13 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "@rjsf/core";
 import type { ComponentProps } from "widgets/BaseComponent";
+import { customizeValidator } from "@rjsf/validator-ajv6";
+
+const metaSchemaDraft04 = require("ajv/lib/refs/json-schema-draft-04.json");
+
+const validator = customizeValidator({
+  additionalMetaSchemas: [metaSchemaDraft04],
+});
 
 function RJSFormComponent(props: RJSFormComponentProps) {
   const {
@@ -18,7 +25,7 @@ function RJSFormComponent(props: RJSFormComponentProps) {
       schema={JSON.parse(initSchema)}
       // submitButtonMessage={"Submit"}
       uiSchema={JSON.parse(initUischema)}
-      validator={"a"}
+      validator={validator}
     />
   );
 }
