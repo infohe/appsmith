@@ -18,9 +18,9 @@ function RJSFormComponent(props: RJSFormComponentProps) {
     <Form
       formData={initFormData}
       onChange={onChange}
-      schema={JSON.parse(initSchema)}
+      schema={initSchema}
       // submitButtonMessage={"Submit"}
-      uiSchema={JSON.parse(initUischema)}
+      uiSchema={initUischema}
       validator={validator}
     />
   );
