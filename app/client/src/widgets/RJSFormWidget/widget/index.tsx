@@ -22,7 +22,7 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
             isTriggerProperty: false,
           },
           {
-            helpText: "Show schema",
+            helpText: "Show UI schema",
             propertyName: "uischema",
             label: "UI Schema",
             controlType: "INPUT_TEXT",
@@ -86,10 +86,10 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
     };
   }
 
-  valueChangedHandler = (formData: any) => {
-    this.props.updateWidgetMetaProperty("formData", formData.formData);
-    this.props.updateWidgetMetaProperty("schema", formData.schema);
-    this.props.updateMetaWidgetProperty("uischema", formData.uiSchema);
+  valueChangedHandler = (event: any) => {
+    this.props.updateWidgetMetaProperty("formData", event.formData);
+    // this.props.updateWidgetMetaProperty("schema", formData.schema);
+    // this.props.updateMetaWidgetProperty("uischema", formData.uiSchema);
   };
 
   getPageView() {
