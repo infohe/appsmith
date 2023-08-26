@@ -7,20 +7,14 @@ import { customizeValidator } from "@rjsf/validator-ajv6";
 const validator = customizeValidator({});
 
 function RJSFormComponent(props: RJSFormComponentProps) {
-  const {
-    formData: initFormData,
-    onChange,
-    schema: initSchema,
-    uischema: initUischema,
-  } = props;
+  const { formData, onChange, schema, uischema } = props;
 
   return (
     <Form
-      formData={initFormData}
+      formData={formData}
       onChange={onChange}
-      schema={initSchema}
-      // submitButtonMessage={"Submit"}
-      uiSchema={initUischema}
+      schema={schema || {}}
+      uiSchema={uischema || {}}
       validator={validator}
     />
   );
@@ -30,7 +24,7 @@ export interface RJSFormComponentProps extends ComponentProps {
   formData: any;
   schema: any;
   uischema: any;
-  onChange: (newFormData: any) => void;
+  onChange: any;
 }
 
 export default RJSFormComponent;

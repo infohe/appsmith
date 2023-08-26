@@ -2,7 +2,7 @@ import React from "react";
 
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
-import type { DerivedPropertiesMap } from "utils/WidgetFactory";
+// import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFormComponent from "../component";
 
@@ -22,7 +22,7 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
             isTriggerProperty: false,
           },
           {
-            helpText: "Show UI schema",
+            helpText: "Show schema",
             propertyName: "uischema",
             label: "UI Schema",
             controlType: "INPUT_TEXT",
@@ -30,29 +30,15 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
             isBindProperty: true,
             isTriggerProperty: false,
           },
-          {
-            helpText: "Show form data",
-            propertyName: "formData",
-            label: "Form Data",
-            controlType: "INPUT_TEXT",
-            placeholderText: "should be a json",
-            isBindProperty: true,
-            isTriggerProperty: false,
-          },
-        ],
-      },
-      {
-        sectionName: "Events",
-        children: [
-          {
-            helpText: "when the form data is changed",
-            propertyName: "onFormDataChanged",
-            label: "onChange",
-            controlType: "ACTION_SELECTOR",
-            isJSConvertible: true,
-            isBindProperty: true,
-            isTriggerProperty: true,
-          },
+          // {
+          //   helpText: "Show form data",
+          //   propertyName: "formData",
+          //   label: "Form Data",
+          //   controlType: "INPUT_TEXT",
+          //   placeholderText: "should be a json",
+          //   isBindProperty: true,
+          //   isTriggerProperty: false,
+          // },
         ],
       },
     ];
@@ -62,34 +48,20 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
     return [];
   }
 
-  static getDefaultPropertiesMap(): Record<string, string> {
-    return {
-      schema: "defaultSchema",
-      uischema: "defaultUischema",
-      formData: "defaultFormData",
-    };
-  }
-
-  static getDerivedPropertiesMap(): DerivedPropertiesMap {
-    return {
-      schema: `{{ this.schema }}`,
-      uischema: `{{ this.uischema }}`,
-      formData: `{{ this.formData }}`,
-    };
-  }
+  // static getDefaultPropertiesMap(): Record<string, string> {
+  //   return {
+  //     formData: "defaultFormData",
+  //   };
+  // }
 
   static getMetaPropertiesMap(): Record<string, any> {
     return {
-      schema: {},
-      uischema: {},
-      formData: {},
+      formData: undefined,
     };
   }
 
-  valueChangedHandler = (event: any) => {
-    this.props.updateWidgetMetaProperty("formData", event.formData);
-    // this.props.updateWidgetMetaProperty("schema", formData.schema);
-    // this.props.updateMetaWidgetProperty("uischema", formData.uiSchema);
+  valueChangedHandler = (data: any) => {
+    this.props.updateWidgetMetaProperty("formData", data.formData);
   };
 
   getPageView() {
@@ -119,10 +91,11 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
 }
 
 export interface RJSFormWidgetProps extends WidgetProps {
-  defaultSchema?: string;
+  defaultFormData: any;
   schema: any;
   uischema: any;
-  onFormDataChanged: { formData: any };
+  formData: any;
+  onChange: any;
 }
 
 export default RJSFormWidget;
