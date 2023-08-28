@@ -14,7 +14,7 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
         children: [
           {
             helpText: "Show schema",
-            propertyName: "schema",
+            propertyName: "defaultSchema",
             label: "Schema",
             controlType: "INPUT_TEXT",
             placeholderText: "should be a json",
@@ -23,22 +23,22 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
           },
           {
             helpText: "Show schema",
-            propertyName: "uischema",
+            propertyName: "defaultUischema",
             label: "UI Schema",
             controlType: "INPUT_TEXT",
             placeholderText: "should be a json",
             isBindProperty: true,
             isTriggerProperty: false,
           },
-          // {
-          //   helpText: "Show form data",
-          //   propertyName: "formData",
-          //   label: "Form Data",
-          //   controlType: "INPUT_TEXT",
-          //   placeholderText: "should be a json",
-          //   isBindProperty: true,
-          //   isTriggerProperty: false,
-          // },
+          {
+            helpText: "Show form data",
+            propertyName: "defaultFormData",
+            label: "Form Data",
+            controlType: "INPUT_TEXT",
+            placeholderText: "should be a json",
+            isBindProperty: true,
+            isTriggerProperty: false,
+          },
         ],
       },
     ];
@@ -48,11 +48,13 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
     return [];
   }
 
-  // static getDefaultPropertiesMap(): Record<string, string> {
-  //   return {
-  //     formData: "defaultFormData",
-  //   };
-  // }
+  static getDefaultPropertiesMap(): Record<string, string> {
+    return {
+      uischema: "defaultUischema",
+      schema: "defaultSchema",
+      formData: "defaultFormData",
+    };
+  }
 
   static getMetaPropertiesMap(): Record<string, any> {
     return {
@@ -92,6 +94,8 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
 
 export interface RJSFormWidgetProps extends WidgetProps {
   defaultFormData: any;
+  defaultSchema: any;
+  defaultUischema: any;
   schema: any;
   uischema: any;
   formData: any;
