@@ -18,8 +18,8 @@ export const CONFIG = {
     rows: 30,
     columns: 40,
     version: 1,
-    schema: undefined,
-    uischema: undefined,
+    defaultSchema: undefined,
+    defaultUischema: undefined,
   },
   properties: {
     derived: Widget.getDerivedPropertiesMap(),

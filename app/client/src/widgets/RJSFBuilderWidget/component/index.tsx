@@ -5,7 +5,7 @@ import type { ComponentProps } from "widgets/BaseComponent";
 import type { CSSProperties } from "react";
 
 function RJSFBuilderComponent(props: RJSFBuilderComponentProps) {
-  const { onChange, schema: initSchema, uischema: initUischema } = props;
+  const { onChange, schema, uischema } = props;
   const style: CSSProperties = {
     overflow: "auto !important",
     height: "auto !important",
@@ -14,9 +14,9 @@ function RJSFBuilderComponent(props: RJSFBuilderComponentProps) {
   return (
     <FormBuilder
       onChange={onChange}
-      schema={initSchema}
+      schema={schema}
       style={style}
-      uischema={initUischema}
+      uischema={uischema}
     />
   );
 }

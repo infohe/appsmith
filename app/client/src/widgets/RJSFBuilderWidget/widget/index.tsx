@@ -2,7 +2,7 @@ import React from "react";
 
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
-import type { DerivedPropertiesMap } from "utils/WidgetFactory";
+// import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFBuilderComponent from "../component";
 
@@ -17,7 +17,7 @@ class RJSFBuilderWidget extends BaseWidget<
         children: [
           {
             helpText: "Show schema",
-            propertyName: "schema",
+            propertyName: "defaultSchema",
             label: "Schema",
             controlType: "INPUT_TEXT",
             placeholderText: "should be a json",
@@ -25,8 +25,8 @@ class RJSFBuilderWidget extends BaseWidget<
             isTriggerProperty: false,
           },
           {
-            helpText: "Show schema",
-            propertyName: "uischema",
+            helpText: "Show ui schema",
+            propertyName: "defaultUischema",
             label: "UI Schema",
             controlType: "INPUT_TEXT",
             placeholderText: "should be a json",
@@ -63,17 +63,17 @@ class RJSFBuilderWidget extends BaseWidget<
     };
   }
 
-  static getDerivedPropertiesMap(): DerivedPropertiesMap {
-    return {
-      schema: `{{ this.schema }}`,
-      uischema: `{{ this.uischema }}`,
-    };
-  }
+  // static getDerivedPropertiesMap(): DerivedPropertiesMap {
+  //   return {
+  //     schema: `{{ this.schema }}`,
+  //     uischema: `{{ this.uischema }}`,
+  //   };
+  // }
 
   static getMetaPropertiesMap(): Record<string, any> {
     return {
-      schema: "{}",
-      uischema: "{}",
+      schema: undefined,
+      uischema: undefined,
     };
   }
 
@@ -110,6 +110,7 @@ class RJSFBuilderWidget extends BaseWidget<
 
 export interface RJSFBuilderWidgetProps extends WidgetProps {
   defaultSchema?: string;
+  defaultUiSchema?: string;
   schema: any;
   uischema: any;
   onSchemaChanged: { schema: string; uischema: string };
