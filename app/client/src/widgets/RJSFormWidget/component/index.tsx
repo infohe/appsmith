@@ -11,6 +11,8 @@ function RJSFormComponent(props: RJSFormComponentProps) {
 
   return (
     <Form
+      /* eslint-disable react/no-children-prop */
+      children
       formData={formData}
       onChange={onChange}
       schema={schema || {}}
