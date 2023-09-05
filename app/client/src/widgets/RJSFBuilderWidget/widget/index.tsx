@@ -2,6 +2,7 @@ import React from "react";
 
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
+import type { SetterConfig } from "entities/AppTheming";
 // import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFBuilderComponent from "../component";
@@ -82,6 +83,23 @@ class RJSFBuilderWidget extends BaseWidget<
 
     this.props.updateWidgetMetaProperty("uischema", uischema);
   };
+
+  static getSetterConfig(): SetterConfig {
+    return {
+      __setters: {
+        setSchema: {
+          path: "defaultSchema",
+          type: "string",
+          accessor: "schema",
+        },
+        setUISchema: {
+          path: "defaultUischema",
+          type: "string",
+          accessor: "uischema",
+        },
+      },
+    };
+  }
 
   getPageView() {
     const { schema, uischema } = this.props;

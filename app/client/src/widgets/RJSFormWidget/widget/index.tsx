@@ -2,6 +2,7 @@ import React from "react";
 
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
+import type { SetterConfig } from "entities/AppTheming";
 // import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFormComponent from "../component";
@@ -65,6 +66,18 @@ class RJSFormWidget extends BaseWidget<RJSFormWidgetProps, WidgetState> {
   valueChangedHandler = (data: any) => {
     this.props.updateWidgetMetaProperty("formData", data.formData);
   };
+
+  static getSetterConfig(): SetterConfig {
+    return {
+      __setters: {
+        setValue: {
+          path: "defaultFormData",
+          type: "object",
+          accessor: "formData",
+        },
+      },
+    };
+  }
 
   getPageView() {
     const { formData, schema, uischema } = this.props;
