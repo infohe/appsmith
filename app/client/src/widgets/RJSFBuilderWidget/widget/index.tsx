@@ -3,6 +3,7 @@ import React from "react";
 import type { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import BaseWidget from "widgets/BaseWidget";
 import type { SetterConfig } from "entities/AppTheming";
+import { ValidationTypes } from "constants/WidgetValidation";
 // import type { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import RJSFBuilderComponent from "../component";
@@ -33,6 +34,16 @@ class RJSFBuilderWidget extends BaseWidget<
             placeholderText: "should be a json",
             isBindProperty: true,
             isTriggerProperty: false,
+          },
+          {
+            helpText: "Controls the visibility of the widget",
+            propertyName: "isVisible",
+            label: "Visible",
+            controlType: "SWITCH",
+            isJSConvertible: true,
+            isBindProperty: true,
+            isTriggerProperty: false,
+            validation: { type: ValidationTypes.BOOLEAN },
           },
         ],
       },
