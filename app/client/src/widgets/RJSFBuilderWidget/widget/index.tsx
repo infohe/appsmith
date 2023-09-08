@@ -70,56 +70,8 @@ class RJSFBuilderWidget extends BaseWidget<
 
   static getDefaultPropertiesMap(): Record<string, string> {
     return {
-      schema: JSON.stringify({
-        type: "object",
-        properties: {
-          make: {
-            title: "Make",
-            type: "string",
-          },
-          model: {
-            title: "Model",
-            type: "string",
-          },
-          assets: {
-            items: {
-              type: "object",
-              properties: {
-                name: {
-                  title: "Name",
-                  type: "string",
-                },
-                destination: {
-                  title: "Destination",
-                  type: "string",
-                },
-                source: {
-                  title: "Source",
-                  type: "string",
-                },
-                assetType: {
-                  title: "Asset Type",
-                  type: "string",
-                },
-              },
-              required: [],
-              dependencies: {},
-            },
-            title: "Assets",
-            type: "array",
-          },
-        },
-        required: [],
-        dependencies: {},
-      }),
-      uischema: JSON.stringify({
-        assets: {
-          items: {
-            "ui:order": ["name", "assetType", "source", "destination"],
-          },
-        },
-        "ui:order": ["make", "model", "assets"],
-      }),
+      schema: "defaultSchema",
+      uischema: "defaultUischema",
     };
   }
 
