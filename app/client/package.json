@@ -60,6 +60,7 @@
     "@loadable/component": "^5.15.3",
     "@manaflair/redux-batch": "^1.0.0",
     "@mantine/hooks": "^5.10.1",
+    "@rjsf/bootstrap-4": "^5.13.2",
     "@rjsf/core": "^5.12.0",
     "@rjsf/utils": "^5.12.0",
     "@rjsf/validator-ajv6": "^5.12.0",
@@ -150,6 +151,7 @@
     "react": "^17.0.2",
     "react-append-to-body": "^2.0.26",
     "react-beautiful-dnd": "^12.2.0",
+    "react-bootstrap": "^2.9.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-device-detect": "^2.2.2",
     "react-dnd": "^9.3.4",
@@ -337,6 +339,8 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
   "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
     "browserslist": "4.20.3",
     "chokidar": "3.5.3",
     "css-select": "4.1.3",

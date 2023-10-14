@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from "@rjsf/core";
+import Form from "@rjsf/bootstrap-4";
 import type { ComponentProps } from "widgets/BaseComponent";
 import { customizeValidator } from "@rjsf/validator-ajv6";
 

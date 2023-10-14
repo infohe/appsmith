@@ -183,7 +183,7 @@ export function SettingsForm(
     return !(requiredFields.length > 0);
   };
 
-  const onClear = (event?: React.FocusEvent<any, any>) => {
+  const onClear = (event?: any) => {
     if (event?.type === "click") {
       AnalyticsUtil.logEvent("ADMIN_SETTINGS_RESET", {
         method: pageTitle,
