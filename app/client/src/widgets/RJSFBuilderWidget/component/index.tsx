@@ -7,7 +7,7 @@ import type { CSSProperties } from "react";
 function RJSFBuilderComponent(props: RJSFBuilderComponentProps) {
   const { onChange, schema, uischema } = props;
   const style: CSSProperties = {
-    overflow: "auto !important",
+    overflow: "auto",
     height: "auto !important",
   };
   const customFormInputs = {
