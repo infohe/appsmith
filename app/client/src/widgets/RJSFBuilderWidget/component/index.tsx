@@ -10,9 +10,32 @@ function RJSFBuilderComponent(props: RJSFBuilderComponentProps) {
     overflow: "auto !important",
     height: "auto !important",
   };
+  const customFormInputs = {
+    hidden: {
+      displayName: "Hidden",
+      matchIf: [
+        {
+          types: ["string"],
+          widget: "hidden",
+        },
+      ],
+      defaultDataSchema: {},
+      defaultUiSchema: {
+        "ui:widget": "hidden",
+      },
+      type: "string",
+      cardBody: () => (
+        <div>
+          <h5>This is a hidden field</h5>
+        </div>
+      ),
+      modalBody: () => <div>Extra editing options in modal appear hear</div>,
+    },
+  };
 
   return (
     <FormBuilder
+      mods={{ customFormInputs }}
       onChange={onChange}
       schema={schema}
       style={style}
