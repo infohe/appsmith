@@ -170,6 +170,9 @@ import RJSFBuilderWidget, {
 import RJSFormWidget, {
   CONFIG as RJS_FORM_WIDGET_CONFIG,
 } from "widgets/RJSFormWidget";
+import RJSFPredefinedWidget, {
+  CONFIG as RJSF_PREDEFINED_CONFIG,
+} from "widgets/RJSFPredefinedWidget";
 
 export const ALL_WIDGETS_AND_CONFIG: [any, WidgetConfiguration][] = [
   [CanvasWidget, CANVAS_WIDGET_CONFIG],
@@ -237,6 +240,7 @@ export const ALL_WIDGETS_AND_CONFIG: [any, WidgetConfiguration][] = [
   //Custom Widgets
   [RJSFBuilderWidget, RJSF_BUILDER_CONFIG],
   [RJSFormWidget, RJS_FORM_WIDGET_CONFIG],
+  [RJSFPredefinedWidget, RJSF_PREDEFINED_CONFIG],
 
   /*
    * If a newly added widget works well inside the list widget,
